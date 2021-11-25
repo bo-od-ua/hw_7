@@ -93,6 +93,35 @@ CREATE TABLE public.prices (
 ALTER TABLE public.prices OWNER TO postgres;
 
 --
+-- Name: sessions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.sessions (
+    id integer NOT NULL,
+    date date
+);
+
+
+ALTER TABLE public.sessions OWNER TO postgres;
+
+--
+-- Name: tickets; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.tickets (
+    id integer NOT NULL,
+    film_id integer,
+    hall_id integer,
+    price_id integer,
+    session_id integer,
+    current_price numeric(4,2),
+    seating integer NOT NULL
+);
+
+
+ALTER TABLE public.tickets OWNER TO postgres;
+
+--
 -- Name: films id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -120,6 +149,22 @@ COPY public.halls (id, name) FROM stdin;
 --
 
 COPY public.prices (id, price, name) FROM stdin;
+\.
+
+
+--
+-- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.sessions (id, date) FROM stdin;
+\.
+
+
+--
+-- Data for Name: tickets; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.tickets (id, film_id, hall_id, price_id, session_id, current_price, seating) FROM stdin;
 \.
 
 
@@ -152,6 +197,22 @@ ALTER TABLE ONLY public.halls
 
 ALTER TABLE ONLY public.prices
     ADD CONSTRAINT prices_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sessions sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sessions
+    ADD CONSTRAINT sessions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tickets tickets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.tickets
+    ADD CONSTRAINT tickets_pkey PRIMARY KEY (id);
 
 
 --
