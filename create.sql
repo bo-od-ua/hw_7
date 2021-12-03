@@ -100,7 +100,8 @@ CREATE TABLE public.seats (
     id integer NOT NULL,
     hall_id integer,
     number integer,
-    area integer
+    area integer,
+    "row" integer
 );
 
 
@@ -171,7 +172,7 @@ COPY public.prices (id, price, name) FROM stdin;
 -- Data for Name: seats; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.seats (id, hall_id, number, area) FROM stdin;
+COPY public.seats (id, hall_id, number, area, "row") FROM stdin;
 \.
 
 
